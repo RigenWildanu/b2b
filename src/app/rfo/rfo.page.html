@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>RFO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row">
+    <div class="col">
+      <ion-card>
+          <ion-list inset no-padding>
+              <label>Order</label>
+              <ion-textarea placeholder="Contoh: kangkung 1kg, telor 1/4kg, beras 1 ton, dst" name="rfo" auto-grow="true"></ion-textarea>
+            </ion-list>
+      </ion-card>
+    </div>
+  </div>
+
+  <div class="row styling-row">
+      <div class="col ion-text-center">
+        <ion-button expand="block" class="energized" color="danger" (click)="rfo()" padding>KIRIM RFO</ion-button>
+      </div>
+    </div>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>PENGATURAN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="row header">
+        <div class="col">
+            <ion-card>
+                <ion-list inset no-padding>
+                    <label>Password Lama</label>
+                    <ion-input type="password" name="password_old" class="register-form" placeholder="Password Lama" [(ngModel)]="password_old"></ion-input>
+                    <label>Password Baru</label>
+                    <ion-input type="password" name="password_new" class="register-form" placeholder="Password Baru" [(ngModel)]="password_new"></ion-input>
+                    <label>Password Baru</label>
+                    <ion-input type="password" name="re_password_new" class="register-form" placeholder="Ketik Ulang Password Baru" [(ngModel)]="re_password_new"></ion-input>
+                  </ion-list>
+            </ion-card>
+        </div>
+    </div>
+
+    <div class="row styling-row">
+        <div class="col ion-text-center">
+          <ion-button expand="block" class="energized" color="danger" (click)="change_password()" padding>SIMPAN</ion-button>
+        </div>
+    </div>
+</ion-content>

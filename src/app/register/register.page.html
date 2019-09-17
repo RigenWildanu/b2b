@@ -1,12 +1,33 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons>
+      <!-- <ion-buttons>
           <ion-back-button></ion-back-button>
-       </ion-buttons>
-    <ion-title>REGISTER</ion-title>
+       </ion-buttons> -->
+    <ion-title>FORM PENDAFTARAN</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="row header">
+    <div clas="col">
+      <ion-card>
+          <ion-list inset no-padding>
+              <ion-label>Nama</ion-label>
+              <ion-input type="text" name="nama" class="register-form" placeholder="Nama" [(ngModel)]="nama"></ion-input>
+              <ion-label>Telp</ion-label>
+              <ion-input type="text" name="telp" class="register-form" placeholder="No Telpon" [(ngModel)]="telpon"></ion-input>
+              <ion-label>Email</ion-label>
+              <ion-input type="email" name="email" class="register-form" placeholder="Email" [(ngModel)]="email"></ion-input>
+              <ion-label>Password</ion-label>
+              <ion-input type="password" name="password" class="register-form" placeholder="Password" [(ngModel)]="password"></ion-input>
+            </ion-list>
+      </ion-card>
+    </div>
+  </div>
 
+  <div class="row styling-row">
+      <div class="col ion-text-center">
+        <ion-button expand="block" class="energized" color="danger" (click)="register()" padding>DAFTAR</ion-button>
+      </div>
+  </div>
 </ion-content>
