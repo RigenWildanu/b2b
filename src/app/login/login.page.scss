@@ -1,11 +1,24 @@
 ion-content{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    --background:rgb(255,255,255,0.5);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .login-form{
+    text-align: center;
     border-bottom: 1px solid rgb(177,177,177,0.5);
 }
 
-h6{
-    text-align: right;
+h1,h3{
+    color: #fd0100;
+}
+
+span{
+    color: #fd0100;
+    font-size: 40px;
+}
+
+.register{
+    text-align: center;
+    color: #fd0100;
+    font-size: 25px !important;
 }
