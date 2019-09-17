@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, NavController, AlertController, Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { Alert } from 'selenium-webdriver';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,24 +10,55 @@ import { Alert } from 'selenium-webdriver';
 })
 export class LoginPage implements OnInit {
 
-  public username;
+  public email;
   public password;
 
-  constructor(public router:Router,
+  constructor(public auth:AuthService,
+    public router:Router,
     private platform:Platform,
     public navCtrl:NavController,
     public alertCtrl:AlertController,
+    public loadingCtrl:LoadingController
     ) { }
 
   ngOnInit() {
   }
 
   async login(){
-    console.log(this.username);
-    console.log(this.password);
+    //console.log(this.email);
+    //console.log(this.password);
+    //this.presentAlert('TES');
+    //this.router.navigateByUrl('/tabs');
+    const loading = await this.loadingCtrl.create({
+        spinner: "crescent",
+        message: 'Autentifikasi akun...',
+        translucent: true,
+        showBackdrop: true
+    });
+    await loading.present();
+    let authvar={
+      email : this.email,
+      password : this.password
+    }
 
-    this.presentAlert('TES');
-    this.router.navigateByUrl('/tabs');
+    //console.log(authvar);
+    this.auth.postLogin(authvar).subscribe(data=>{
+      loading.dismiss();  
+      console.log('respon json API', data);
+      if(data.status){
+        console.log(data.data[0].api_token);
+
+        localStorage.setItem('api_token',data.data[0].api_token);
+        let api_token = localStorage.getItem('api_token');
+
+        this.router.navigateByUrl('/tabs');
+      }else{
+        this.presentAlert(data.message);
+        console.log(data.message);
+      }
+    });
+    //this.presentAlert('TES');
+    
   }
 
   async register(){
