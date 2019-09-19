@@ -39,7 +39,7 @@ export class RegisterPage implements OnInit {
     await loading.present();
     let regvar={
       nama  : this.nama,
-      telp : this.telp,
+      phone : this.telp,
       email : this.email,
       password : this.password,
       re_password : this.password

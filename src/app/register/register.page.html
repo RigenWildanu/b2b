@@ -1,8 +1,10 @@
 <ion-header>
   <ion-toolbar>
-      <!-- <ion-buttons>
-          <ion-back-button></ion-back-button>
-       </ion-buttons> -->
+      <ion-buttons slot="start">
+          <ion-buttons slot="start">
+              <ion-back-button text="Kembali" icon="arrow-back"></ion-back-button>
+            </ion-buttons>
+        </ion-buttons>
     <ion-title>FORM PENDAFTARAN</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,7 +17,7 @@
               <ion-label>Nama</ion-label>
               <ion-input type="text" name="nama" class="register-form" placeholder="Nama" [(ngModel)]="nama"></ion-input>
               <ion-label>Telp</ion-label>
-              <ion-input type="text" name="telp" class="register-form" placeholder="No Telpon" [(ngModel)]="telpon"></ion-input>
+              <ion-input type="text" name="telp" class="register-form" placeholder="No Telpon" [(ngModel)]="telp"></ion-input>
               <ion-label>Email</ion-label>
               <ion-input type="email" name="email" class="register-form" placeholder="Email" [(ngModel)]="email"></ion-input>
               <ion-label>Password</ion-label>

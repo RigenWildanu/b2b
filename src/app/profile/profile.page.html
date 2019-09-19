@@ -8,15 +8,17 @@
   <div class="row">
     <div clas="col">
       <ion-card padding>
-        <ion-list inset>
+        <ion-list inset *ngFor="let item of profile">
             <ion-label>Nama</ion-label>
-            <ion-input name="nama" placeholder="Nama"></ion-input>
+            <ion-input name="nama" placeholder="Nama" value="{{item.name}}"></ion-input>
+            <ion-label>Email</ion-label>
+            <ion-input name="email" placeholder="Email" value="{{item.email}}"></ion-input>
             <ion-label>Alamat</ion-label>
-            <ion-input name="alamat" placeholder="Alamat"></ion-input>
+            <ion-input name="alamat" placeholder="Alamat" value="{{item.alamat}}"></ion-input>
             <ion-label>Telp</ion-label>
-            <ion-input name="telp" placeholder="No Telpon"></ion-input>
+            <ion-input name="telp" placeholder="No Telpon" value="{{item.phone}}"></ion-input>
             <ion-label>No KTP</ion-label>
-            <ion-input name="ktp" placeholder="No KTP"></ion-input>
+            <ion-input name="ktp" placeholder="No KTP" value="{{item.ktp}}"></ion-input>
         </ion-list>
       </ion-card>
     </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  public profile=[];
 
-  constructor() { }
+  constructor(public auth:AuthService, public loadingCtrl:LoadingController) { 
+    this.auth.getProfile().subscribe(data=>{
+      console.log(data);
 
+      this.profile=data.data;
+    });
+  }
   ngOnInit() {
   }
 

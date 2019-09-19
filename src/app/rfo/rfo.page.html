@@ -12,13 +12,73 @@
               <label>Order</label>
               <ion-textarea placeholder="Contoh: kangkung 1kg, telor 1/4kg, beras 1 ton, dst" name="rfo" auto-grow="true"></ion-textarea>
             </ion-list>
+            <div class="col ion-text-center">
+              <ion-button expand="block" class="energized" color="danger" (click)="rfo()" padding>KIRIM RFO</ion-button>
+            </div>
       </ion-card>
     </div>
   </div>
 
-  <div class="row styling-row">
-      <div class="col ion-text-center">
-        <ion-button expand="block" class="energized" color="danger" (click)="rfo()" padding>KIRIM RFO</ion-button>
+
+  <ion-card>
+    <div class="row">
+      <div class="col">
+        <ion-list inset no-padding *ngFor="let item of displayMitra">
+          <h6 *ngIf="item.id_registrasi==''">Registrasi Mitra</h6>
+          <h6 *ngIf="item.id_registrasi!=''">Data Mitra</h6>
+          
+          <ion-label>Nama Toko</ion-label>
+          <ion-label ></ion-label>
+          <ion-input *ngIf="item.nama_toko==''" type="text" name="nama_toko" class="register-form" placeholder="Nama Toko" [(ngModel)]="nama_toko"></ion-input>
+          <ion-input *ngIf="item.nama_toko!=''" value="{{item.nama_toko}}" type="text" name="nama_toko" class="register-form" placeholder="Nama Toko" readonly></ion-input>
+          
+          <ion-label>Nama Pemilik</ion-label>
+          <ion-input *ngIf="item.nama_toko==''" type="text" name="nama_pemilik" class="register-form" placeholder="Nama Pemilik" [(ngModel)]="nama_pemilik"></ion-input>
+          <ion-input *ngIf="item.nama_toko!=''" value="{{item.nama_pemilik}}" type="text" name="nama_pemilik" class="register-form" placeholder="Nama Pemilik" readonly></ion-input>
+
+          <ion-label>Jenis Kepemilikan</ion-label>
+          <ion-input *ngIf="item.jenis_kepemilikan==''" type="text" name="jenis_kepemilikan" class="register-form" placeholder="Jenis Kepemilikan" [(ngModel)]="jenis_kepemilikan"></ion-input>
+          <ion-input *ngIf="item.jenis_kepemilikan!=''" value="{{item.jenis_kepemilikan}}" type="text" name="jenis_kepemilikan" class="register-form" placeholder="Jenis Kepemilikan" readonly></ion-input>
+
+          <ion-label>Nomor KTP</ion-label>
+          <ion-input *ngIf="item.nomor_ktp==''" type="text" name="nomor_ktp" class="register-form" placeholder="Nomor KTP" [(ngModel)]="nomor_ktp"></ion-input>
+          <ion-input *ngIf="item.nomor_ktp!=''" value="{{item.nomor_ktp}}" type="text" name="nomor_ktp" class="register-form" placeholder="Nomor KTP" readonly></ion-input>
+
+          <ion-label>Nomor Telepon</ion-label>
+          <ion-input *ngIf="item.nomor_telepon==''" type="text" name="nomor_telepon" class="register-form" placeholder="Nomor Telpon" [(ngModel)]="nomor_telepon"></ion-input>
+          <ion-input *ngIf="item.nomor_telepon!=''" value="{{item.nomor_telepon}}" type="text" name="nomor_telepon" class="register-form" placeholder="Nomor Telpon" readonly></ion-input>
+
+          <ion-label>Tempat Lahir</ion-label>
+          <ion-input *ngIf="item.tempat_lahir==''" type="text" name="tempat_lahir" class="register-form" placeholder="Tempat Lahir" [(ngModel)]="tempat_lahir"></ion-input>
+          <ion-input *ngIf="item.tempat_lahir!=''" value="{{item.tempat_lahir}}" type="text" name="tempat_lahir" class="register-form" placeholder="Tempat Lahir" readonly></ion-input>
+
+          <ion-label>Tanggal Lahir</ion-label>
+          <ion-input *ngIf="item.tanggal_lahir==''" type="text" name="tanggal_lahir" class="register-form" placeholder="dd-mm-yyy" [(ngModel)]="tanggal_lahir"></ion-input>
+          <ion-input *ngIf="item.tanggal_lahir!=''" value="{{item.tanggal_lahir}}" type="text" name="tanggal_lahir" class="register-form" placeholder="dd-mm-yyy" readonly></ion-input>
+
+          <ion-label>Alamat</ion-label>
+          <ion-input *ngIf="item.alamat==''" type="text" name="alamat" class="register-form" placeholder="Alamat" [(ngModel)]="alamat"></ion-input>
+          <ion-input *ngIf="item.alamat!=''" value="{{item.alamat}}" type="text" name="alamat" class="register-form" placeholder="Alamat" readonly></ion-input>
+
+          <ion-label>Kode Pos</ion-label>
+          <ion-input *ngIf="item.kode_pos==''" type="text" name="kode_pos" class="register-form" placeholder="Kode Pos" [(ngModel)]="kode_pos"></ion-input>
+          <ion-input *ngIf="item.kode_pos!=''" value="{{item.kode_pos}}" type="text" name="kode_pos" class="register-form" placeholder="Kode Pos" readonly></ion-input>
+
+          <ion-label>Tipe Agent</ion-label>
+          <ion-input *ngIf="item.agent_type==''" type="text" name="agent_type" class="register-form" placeholder="Tipe Agent" [(ngModel)]="agent_type"></ion-input>
+          <ion-input *ngIf="item.agent_type!=''" value="{{item.agent_type}}" type="text" name="agent_type" class="register-form" placeholder="Tipe Agent" readonly></ion-input>
+
+          <ion-label>Bidang Usaha</ion-label>
+          <ion-input *ngIf="item.bidang_usaha==''" type="text" name="bidang_usaha" class="register-form" placeholder="Bidang Usaha" [(ngModel)]="bidang_usaha"></ion-input>
+          <ion-input *ngIf="item.bidang_usaha!=''" value="{{item.bidang_usaha}}" type="text" name="bidang_usaha" class="register-form" placeholder="Bidang Usaha" readonly></ion-input>
+
+          <ion-label *ngIf="item.notes==''">Notes</ion-label>
+          <ion-textarea *ngIf="item.notes==''" placeholder="Contoh: Saya ingin begabung dengan keluarga marko karena..." name="notes" auto-grow="true" [(ngModel)]="notes"></ion-textarea>
+        </ion-list>
+        <div class="col ion-text-center" *ngFor="let item of displayMitra">
+            <ion-button  *ngIf="item.id_registrasi==''" expand="block" class="energized" color="danger" (click)="register_mitra()" padding>AJUKAN</ion-button>
+          </div>
       </div>
     </div>
+  </ion-card>
 </ion-content>
