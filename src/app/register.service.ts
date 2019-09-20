@@ -17,8 +17,8 @@ export class RegisterService {
       headers.append('content-type', 'application/x-www-form-urlencoded');
       // siapkan body
       let body = new URLSearchParams();
-      body.append('name', register.nama);
-      body.append('phone', register.telp);
+      body.append('name', register.name);
+      body.append('phone', register.phone);
       body.append('email', register.email);
       body.append('password', register.password);
       body.append('re_password', register.password);

@@ -9,8 +9,8 @@ import { RegisterService } from '../register.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  public nama;
-  public telp;
+  public name;
+  public phone;
   public email;
   public password;
 
@@ -38,8 +38,8 @@ export class RegisterPage implements OnInit {
     });
     await loading.present();
     let regvar={
-      nama  : this.nama,
-      phone : this.telp,
+      name  : this.name,
+      phone : this.phone,
       email : this.email,
       password : this.password,
       re_password : this.password
@@ -54,7 +54,7 @@ export class RegisterPage implements OnInit {
 
         // localStorage.setItem('api_token',data.data[0].api_token);
         // let api_token = localStorage.getItem('api_token');
-
+        this.presentAlert("Registrasi telah berhasil");
         this.router.navigateByUrl('/login');
       }else{
         this.presentAlert(data.message);
