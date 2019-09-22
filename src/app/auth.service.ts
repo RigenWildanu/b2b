@@ -44,6 +44,7 @@ export class AuthService {
       });
     });
   }
+  
   public postUpdateProfile(updatePofile){
     return Observable.create(observer => {
       let apiToken=localStorage.getItem('api_token');
