@@ -8,25 +8,117 @@
   <div class="row">
     <div clas="col">
       <ion-card padding>
-        <ion-list inset *ngFor="let item of profile">
+        <ion-list inset>
             <ion-label>Nama</ion-label>
-            <ion-input name="nama" placeholder="Nama" value="{{item.name}}"></ion-input>
+            <ion-input name="nama" placeholder="Nama" [(ngModel)]="name"></ion-input>
             <ion-label>Email</ion-label>
-            <ion-input name="email" placeholder="Email" value="{{item.email}}"></ion-input>
-            <ion-label>Alamat</ion-label>
-            <ion-input name="alamat" placeholder="Alamat" value="{{item.alamat}}"></ion-input>
+            <ion-input name="email" placeholder="Email" [(ngModel)]="email"></ion-input>
             <ion-label>Telp</ion-label>
-            <ion-input name="telp" placeholder="No Telpon" value="{{item.phone}}"></ion-input>
-            <ion-label>No KTP</ion-label>
-            <ion-input name="ktp" placeholder="No KTP" value="{{item.ktp}}"></ion-input>
+            <ion-input name="telp" placeholder="No Telpon" [(ngModel)]="phone"></ion-input>
         </ion-list>
+        <div class="col ion-text-center">
+          <ion-button expand="block" class="energized" color="danger" (click)="updateProfile()" padding>Simpan</ion-button>
+        </div>
+      </ion-card>
+      <!-- <ion-card>
+        {{displayMitra}}
+      </ion-card> -->
+      <ion-card>
+        <div class="row">
+          <div class="col">
+            <ng-container *ngIf="displayMitra===false; else elseTemplate">
+                <h6>Registrasi Mitra</h6>
+                <ion-list inset no-padding>
+                    <ion-label>Nama Toko</ion-label>
+                    <ion-label ></ion-label>
+                    <ion-input type="text" name="nama_toko" class="register-form" placeholder="Nama Toko" [(ngModel)]="nama_toko"></ion-input>
+                    
+                    <ion-label>Nama Pemilik</ion-label>
+                    <ion-input type="text" name="nama_pemilik" class="register-form" placeholder="Nama Pemilik" [(ngModel)]="nama_pemilik"></ion-input>
+                    
+                    <ion-label>Jenis Kepemilikan</ion-label>
+                    <!-- <ion-input type="text" name="jenis_kepemilikan" class="register-form" placeholder="Jenis Kepemilikan" ></ion-input> -->
+                    <ion-select placeholder="Pilih salah satu" [(ngModel)]="jenis_kepemilikan">
+                        <ion-select-option value="0">Perorangan</ion-select-option>
+                        <ion-select-option value="1">Badan Usaha</ion-select-option>
+                    </ion-select>
+          
+                    <ion-label>Nomor KTP</ion-label>
+                    <ion-input type="text" name="nomor_ktp" class="register-form" placeholder="Nomor KTP" [(ngModel)]="nomor_ktp"></ion-input>
+          
+                    <ion-label>Nomor Telepon</ion-label>
+                    <ion-input type="text" name="nomor_telepon" class="register-form" placeholder="Nomor Telpon" [(ngModel)]="nomor_telepon"></ion-input>
+          
+                    <ion-label>Tempat Lahir</ion-label>
+                    <ion-input type="text" name="tempat_lahir" class="register-form" placeholder="Tempat Lahir" [(ngModel)]="tempat_lahir"></ion-input>
+          
+                    <ion-label>Tanggal Lahir</ion-label>
+                    <ion-input  type="text" name="tanggal_lahir" class="register-form" placeholder="dd-mm-yyy" [(ngModel)]="tanggal_lahir"></ion-input>
+          
+                    <ion-label>Alamat</ion-label>
+                    <ion-input type="text" name="alamat" class="register-form" placeholder="Alamat" [(ngModel)]="alamat"></ion-input>
+          
+                    <ion-label>Kode Pos</ion-label>
+                    <ion-input type="text" name="kode_pos" class="register-form" placeholder="Kode Pos" [(ngModel)]="kode_pos"></ion-input>
+          
+                    <ion-label>Tipe Agen</ion-label>
+                    <ion-select placeholder="Pilih salah satu" [(ngModel)]="agent_type">
+                        <ion-select-option value="0">Agen</ion-select-option>
+                        <ion-select-option value="1">Sub Agen</ion-select-option>
+                    </ion-select>
+          
+                    <ion-label>Bidang Usaha</ion-label>
+                    <ion-input type="text" name="bidang_usaha" class="register-form" placeholder="Bidang Usaha" [(ngModel)]="bidang_usaha"></ion-input>
+          
+                    <ion-label >Notes</ion-label>
+                    <ion-textarea placeholder="Contoh: Saya ingin begabung dengan keluarga marko karena..." name="notes" auto-grow="true" [(ngModel)]="notes"></ion-textarea>
+                  </ion-list>
+                  <div class="col ion-text-center">
+                    <ion-button expand="block" class="energized" color="danger" (click)="register_mitra()" padding>AJUKAN</ion-button>
+                  </div>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <ion-list inset no-padding *ngFor="let item of displayMitra">
+                    <h6>Data Mitra</h6>
+                    
+                    <ion-label>Nama Toko</ion-label>
+                    <ion-label ></ion-label>
+                    <ion-input value="{{item.nama_toko}}" type="text" name="nama_toko" class="register-form" placeholder="Nama Toko" readonly></ion-input>
+                    
+                    <ion-label>Nama Pemilik</ion-label>
+                    <ion-input value="{{item.nama_pemilik}}" type="text" name="nama_pemilik" class="register-form" placeholder="Nama Pemilik" readonly></ion-input>
+          
+                    <ion-label>Jenis Kepemilikan</ion-label>
+                    <ion-input value="{{item.jenis_kepemilikan}}" type="text" name="jenis_kepemilikan" class="register-form" placeholder="Jenis Kepemilikan" readonly></ion-input>
+          
+                    <ion-label>Nomor KTP</ion-label>
+                    <ion-input value="{{item.nomor_ktp}}" type="text" name="nomor_ktp" class="register-form" placeholder="Nomor KTP" readonly></ion-input>
+          
+                    <ion-label>Nomor Telepon</ion-label>
+                    <ion-input value="{{item.nomor_telepon}}" type="text" name="nomor_telepon" class="register-form" placeholder="Nomor Telpon" readonly></ion-input>
+          
+                    <ion-label>Tempat Lahir</ion-label>
+                    <ion-input value="{{item.tempat_lahir}}" type="text" name="tempat_lahir" class="register-form" placeholder="Tempat Lahir" readonly></ion-input>
+          
+                    <ion-label>Tanggal Lahir</ion-label>
+                    <ion-input value="{{item.tanggal_lahir}}" type="text" name="tanggal_lahir" class="register-form" placeholder="dd-mm-yyy" readonly></ion-input>
+          
+                    <ion-label>Alamat</ion-label>
+                    <ion-input value="{{item.alamat}}" type="text" name="alamat" class="register-form" placeholder="Alamat" readonly></ion-input>
+          
+                    <ion-label>Kode Pos</ion-label>
+                    <ion-input value="{{item.kode_pos}}" type="text" name="kode_pos" class="register-form" placeholder="Kode Pos" readonly></ion-input>
+          
+                    <ion-label>Tipe Agent</ion-label>
+                    <ion-input value="{{item.agent_type}}" type="text" name="agent_type" class="register-form" placeholder="Tipe Agent" readonly></ion-input>
+          
+                    <ion-label>Bidang Usaha</ion-label>
+                    <ion-input value="{{item.bidang_usaha}}" type="text" name="bidang_usaha" class="register-form" placeholder="Bidang Usaha" readonly></ion-input>
+                  </ion-list>
+            </ng-template>
+          </div>
+        </div>
       </ion-card>
     </div>
-  </div>
-
-  <div class="row styling-row">
-      <div class="col ion-text-center">
-        <ion-button expand="block" class="energized" color="danger" padding>Simpan</ion-button>
-      </div>
   </div>
 </ion-content>
