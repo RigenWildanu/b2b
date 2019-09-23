@@ -27,17 +27,22 @@
       <ng-container *ngIf="data!=''; else elseTemplate">
         <ion-card>
           <ion-list inset no-padding *ngFor="let item of datarfo">
-            <ion-item (click)="getRfoDet()">
-              {{item.description}}
-              {{item.date}}
+            <ion-item>
+              <ion-label>
+                  {{item.description}}
+              </ion-label>
+              <ion-label class="date-rfo">
+                  Tgl Pesan : {{item.date}}
+              </ion-label>
             </ion-item>
           </ion-list>
         </ion-card>
       </ng-container>
       <ng-template #elseTemplate>
-        <span>Belum ada RFO</span>
+        <div class="rfo-text" padding>
+            <span>Belum ada RFO</span>
+        </div>
       </ng-template>
-      
     </div>
   </div>
 </ion-content>

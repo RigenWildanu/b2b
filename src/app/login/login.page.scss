@@ -4,7 +4,12 @@ ion-content{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.logo-header{
+  margin-bottom: 5%;
+}
+
 .login{
+  width: 75%;
   position: absolute;
     top: 50%;
     left: 50%;
@@ -25,7 +30,7 @@ h1,h3{
 
 span{
     color: #fd0100;
-    font-size: 40px;
+    font-size: 15px;
 }
 
 .register{

@@ -100,6 +100,29 @@ export class AuthService {
       //console.log(return this.http.post);
   }
 
+  public postUpdatePassword(updatePassword){
+    return Observable.create(observer => {
+      let apiToken=localStorage.getItem('api_token');
+      // siapkan header
+      let headers = new Headers();
+      headers.append('content-type', 'application/x-www-form-urlencoded');
+      // siapkan body
+      let body = new URLSearchParams();
+      body.append('old_password', updatePassword.old_password);
+      body.append('new_password', updatePassword.new_password);
+      body.append('re_password', updatePassword.re_password);
+      
+      // call API
+        return this.http.post(this.baseurl+'auth/user.php?method=updatePassword&api_token='+apiToken,body.toString(), {headers:headers}).subscribe(res => { 
+          observer.next(res.json());
+          observer.complete();  
+      }, (err) => { 
+        console.log(err);
+        });
+      });
+      //console.log(return this.http.post);
+  }
+
   public getMitra(){
     //let baseUrl = "http://178.128.127.241/b2b/api/";
     let params = new URLSearchParams();

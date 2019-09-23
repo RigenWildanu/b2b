@@ -10,11 +10,11 @@
             <ion-card>
                 <ion-list inset no-padding>
                     <label>Password Lama</label>
-                    <ion-input type="password" name="password_old" class="register-form" placeholder="Password Lama" [(ngModel)]="password_old"></ion-input>
+                    <ion-input type="password" name="old_password" class="register-form" placeholder="Password Lama" [(ngModel)]="old_password"></ion-input>
                     <label>Password Baru</label>
-                    <ion-input type="password" name="password_new" class="register-form" placeholder="Password Baru" [(ngModel)]="password_new"></ion-input>
+                    <ion-input type="password" name="new_password" class="register-form" placeholder="Password Baru" [(ngModel)]="new_password"></ion-input>
                     <label>Ketik Ulang Password Baru</label>
-                    <ion-input type="password" name="re_password_new" class="register-form" placeholder="Ketik Ulang Password Baru" [(ngModel)]="re_password_new"></ion-input>
+                    <ion-input type="password" name="re_password" class="register-form" placeholder="Ketik Ulang Password Baru" [(ngModel)]="re_password"></ion-input>
                   </ion-list>
             </ion-card>
         </div>
@@ -22,7 +22,7 @@
 
     <div class="row styling-row">
         <div class="col ion-text-center">
-          <ion-button expand="block" class="energized" color="danger" (click)="change_password()" padding>SIMPAN</ion-button>
+          <ion-button expand="block" class="energized" color="danger" (click)="changePassword()" padding>SIMPAN</ion-button>
         </div>
     </div>
     <div class="row styling-row">
