@@ -6,32 +6,34 @@
 </div>
 
 <ion-content class="ion-padding">
-    <div class="row styling-row">
-      <div class="col" text-center>
-        <div class="logo-header" padding>
-          <img src="../../assets/icon/logo_marko.png">
+  <div class="login">
+      <div class="row styling-row">
+          <div class="col" text-center>
+            <div class="logo-header" no-padding>
+              <img src="../../assets/icon/logo_marko.png">
+            </div>
+            <b><span>B2B</span></b>
+          </div>
         </div>
-        <b><span>B2B</span></b>
-      </div>
-    </div>
-    
-    <div class="row header">
-      <div class="col">
-        <ion-list inset padding>
-            <!--ion-label>Username</ion-label-->
-            <ion-input type="text" name="email" [(ngModel)]="email" placeholder="Username" class="login-form">  </ion-input>
-            <br>
-            <!--ion-label>Password</ion-label-->
-            <ion-input type="password" name="password" [(ngModel)]="password" placeholder="Password" class="login-form"></ion-input>
-          </ion-list>
-      </div>
-    </div>
-  
-    <div class="row styling-row">
-      <div class="col ion-text-center">
-        <ion-button expand="block" class="energized" color="danger" (click)="login()">MASUK</ion-button>
-      </div>
-    </div>
+        
+        <div class="row header">
+          <div class="col">
+            <ion-list inset no-padding>
+                <!--ion-label>Username</ion-label-->
+                <ion-input type="text" name="email" [(ngModel)]="email" placeholder="Username" class="login-form">  </ion-input>
+                <br>
+                <!--ion-label>Password</ion-label-->
+                <ion-input type="password" name="password" [(ngModel)]="password" placeholder="Password" class="login-form"></ion-input>
+              </ion-list>
+          </div>
+        </div>
+      
+        <div class="row styling-row">
+          <div class="col ion-text-center">
+            <ion-button expand="block" class="energized" color="danger" (click)="login()">MASUK</ion-button>
+          </div>
+        </div>
+  </div>
   </ion-content>
 
   <ion-footer>

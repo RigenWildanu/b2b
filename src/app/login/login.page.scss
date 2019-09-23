@@ -4,7 +4,12 @@ ion-content{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-// .bg{}
+.login{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+}
 
 ion-card{
 --background:rgb(255,255,255,0.5);
