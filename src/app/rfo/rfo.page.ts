@@ -42,6 +42,22 @@ export class RfoPage implements OnInit {
 
   ngOnInit() {}
 
+  doRefresh(event) {
+    console.log('tes refresh');
+
+    this.rfo.getRfo().subscribe(data=>{
+      console.log(data);
+
+      this.datarfo=data.data;
+    });
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      
+      event.target.complete();
+    }, 2000);
+  }
+
   async postRfo(){
     const loading = await this.loadingCtrl.create({
       spinner: "crescent",
