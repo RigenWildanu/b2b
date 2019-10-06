@@ -60,6 +60,22 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
   }
 
+  doRefresh(event) {
+    console.log('tes refresh');
+
+    this.mitra.getMitra().subscribe(data=>{
+      console.log(data);
+
+      this.displayMitra=data.data;
+    });
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      
+      event.target.complete();
+    }, 2000);
+  }
+
   async register_mitra(){
     //console.log(this.email);
     //console.log(this.password);
@@ -96,7 +112,7 @@ export class ProfilePage implements OnInit {
       if(data.status){
         console.log(data.data[0].api_token);
 
-        this.router.navigateByUrl('/tabs/rfo');
+        this.router.navigateByUrl('/tabs/profile');
       }else{
         this.presentAlert(data.message);
         console.log(data.message);

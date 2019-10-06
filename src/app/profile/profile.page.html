@@ -5,6 +5,14 @@
 </ion-header>
 
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="crescent"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+  </ion-refresher>
   <div class="row">
     <div clas="col">
       <ion-card padding>
@@ -37,7 +45,6 @@
                     <ion-input type="text" name="nama_pemilik" class="register-form" placeholder="Nama Pemilik" [(ngModel)]="nama_pemilik"></ion-input>
                     
                     <ion-label>Jenis Kepemilikan</ion-label>
-                    <!-- <ion-input type="text" name="jenis_kepemilikan" class="register-form" placeholder="Jenis Kepemilikan" ></ion-input> -->
                     <ion-select placeholder="Pilih salah satu" [(ngModel)]="jenis_kepemilikan">
                         <ion-select-option value="0">Perorangan</ion-select-option>
                         <ion-select-option value="1">Badan Usaha</ion-select-option>
@@ -53,6 +60,7 @@
                     <ion-input type="text" name="tempat_lahir" class="register-form" placeholder="Tempat Lahir" [(ngModel)]="tempat_lahir"></ion-input>
           
                     <ion-label>Tanggal Lahir</ion-label>
+                    <!-- <ion-datetime displayFormat="DD MM YYYY" name="tanggal_lahir" class="register-form" placeholder="dd-mm-yyyy" [(ngModel)]="tanggal_lahir"></ion-datetime> -->
                     <ion-input  type="text" name="tanggal_lahir" class="register-form" placeholder="dd-mm-yyy" [(ngModel)]="tanggal_lahir"></ion-input>
           
                     <ion-label>Alamat</ion-label>
@@ -71,7 +79,7 @@
                     <ion-input type="text" name="bidang_usaha" class="register-form" placeholder="Bidang Usaha" [(ngModel)]="bidang_usaha"></ion-input>
           
                     <ion-label >Notes</ion-label>
-                    <ion-textarea placeholder="Contoh: Saya ingin begabung dengan keluarga marko karena..." name="notes" auto-grow="true" [(ngModel)]="notes"></ion-textarea>
+                    <ion-textarea placeholder="Contoh: Saya ingin bergabung dengan keluarga marko karena..." name="notes" auto-grow="true" [(ngModel)]="notes"></ion-textarea>
                   </ion-list>
                   <div class="col ion-text-center" padding>
                     <ion-button expand="block" class="energized" color="danger" (click)="register_mitra()" padding>AJUKAN</ion-button>
