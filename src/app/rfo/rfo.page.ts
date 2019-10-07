@@ -30,13 +30,26 @@ export class RfoPage implements OnInit {
         this.mitra.getMitra().subscribe(data=>{
           console.log(data);
 
-          this.statusMitra=data.status;
+          if(data.data!=''){
+            console.log(this.statusMitra=data.message);
+            this.statusMitra=data.data;
+          }else{
+            this.statusMitra=data.status;
+          }
+
+          // this.statusMitra=data.status;
         });
 
         this.rfo.getRfo().subscribe(data=>{
-          console.log(data);
+          console.log('rfo'+data);
 
-          this.datarfo=data.data;
+          if (data.data!=null) {
+            this.datarfo=data.data;
+          } else {
+            this.datarfo=data.data;
+          }
+
+          //this.datarfo=data.data;
         });
     }
 
@@ -44,11 +57,28 @@ export class RfoPage implements OnInit {
 
   doRefresh(event) {
     console.log('tes refresh');
-
-    this.rfo.getRfo().subscribe(data=>{
+    this.mitra.getMitra().subscribe(data=>{
       console.log(data);
 
-      this.datarfo=data.data;
+      if(data.data!=''){
+        console.log(this.statusMitra=data.message);
+        this.statusMitra=data.data;
+      }else{
+        this.statusMitra=data.status;
+      }
+
+      // this.statusMitra=data.status;
+    });
+    
+
+    this.rfo.getRfo().subscribe(data=>{
+      console.log('rfo'+data);
+
+          if (data.data!='') {
+            this.datarfo=data.data;
+          } else {
+            this.datarfo=data.status;
+          }
     });
 
     setTimeout(() => {
@@ -61,7 +91,7 @@ export class RfoPage implements OnInit {
   async postRfo(){
     const loading = await this.loadingCtrl.create({
       spinner: "crescent",
-      message: 'Mengirim RFO...',
+      message: 'Mengirim Pesanan...',
       translucent: true,
       showBackdrop: true
   });

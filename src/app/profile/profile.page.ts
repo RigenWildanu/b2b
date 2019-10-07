@@ -84,7 +84,7 @@ export class ProfilePage implements OnInit {
     //let apiToken = localStorage.getItem('api_token');
     const loading = await this.loadingCtrl.create({
         spinner: "crescent",
-        message: 'Registrasi akun...',
+        message: 'Registrasi mitra...',
         translucent: true,
         showBackdrop: true
     });
@@ -111,6 +111,7 @@ export class ProfilePage implements OnInit {
       console.log('respon json API', data);
       if(data.status){
         console.log(data.data[0].api_token);
+        this.presentAlert('Terimakasih telah mendaftar menjadi mitra Marko, admin kami akan menghubungi anda untuk melakukan verifikasi data.');
 
         this.router.navigateByUrl('/tabs/profile');
       }else{

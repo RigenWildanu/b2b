@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>RFO</ion-title>
+    <ion-title>PESANAN</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,24 +15,28 @@
   </ion-refresher>
   <div class="row">
     <div class="col">
-      <ng-container *ngIf="statusMitra===true; else elseTemplate">
+      <ng-container *ngIf="statusMitra; else elseTemplateMitra">
           <ion-card>
               <ion-list inset no-padding>
                   <label>Order</label>
                   <ion-textarea placeholder="Contoh: kangkung 1kg, telor 1/4kg, beras 1 ton, dst" name="rfo" auto-grow="true" [(ngModel)]="description"></ion-textarea>
                 </ion-list>
                 <div class="col ion-text-center">
-                  <ion-button expand="block" class="energized" color="danger" (click)="postRfo()" padding>KIRIM RFO</ion-button>
+                  <ion-button expand="block" class="energized" color="danger" (click)="postRfo()" padding>KIRIM PESANAN</ion-button>
                 </div>
           </ion-card>
       </ng-container>
-      <ng-template #elseTemplate>
+      <ng-template #elseTemplateMitra>
         <ion-list inset no-padding>
             <h6>Belum terdaftar sebagai mitra, silahkan mendaftar di menu Profile</h6>
         </ion-list>
       </ng-template>
 
-      <ng-container *ngIf="data!=''; else elseTemplate">
+       <!-- <ion-card>
+        {{datarfo}}
+      </ion-card> -->
+
+      <ng-container *ngIf="datarfo!=null; else elseTemplate">
         <ion-card>
           <ion-list inset no-padding *ngFor="let item of datarfo">
             <ion-item>
@@ -48,7 +52,7 @@
       </ng-container>
       <ng-template #elseTemplate>
         <div class="rfo-text" padding>
-            <span>Belum ada RFO</span>
+            <span>Belum ada Pesanan</span>
         </div>
       </ng-template>
     </div>

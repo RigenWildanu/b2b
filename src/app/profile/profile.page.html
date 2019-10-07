@@ -34,7 +34,7 @@
       <ion-card>
         <div class="row">
           <div class="col">
-            <ng-container *ngIf="displayMitra===false; else elseTemplate">
+            <ng-container *ngIf="!displayMitra; else elseTemplate">
                 <h6>Registrasi Mitra</h6>
                 <ion-list inset no-padding>
                     <ion-label>Nama Toko</ion-label>
@@ -61,7 +61,7 @@
           
                     <ion-label>Tanggal Lahir</ion-label>
                     <!-- <ion-datetime displayFormat="DD MM YYYY" name="tanggal_lahir" class="register-form" placeholder="dd-mm-yyyy" [(ngModel)]="tanggal_lahir"></ion-datetime> -->
-                    <ion-input  type="text" name="tanggal_lahir" class="register-form" placeholder="dd-mm-yyy" [(ngModel)]="tanggal_lahir"></ion-input>
+                    <ion-input  type="text" name="tanggal_lahir" class="register-form" placeholder="dd-mm-yyyy" [(ngModel)]="tanggal_lahir"></ion-input>
           
                     <ion-label>Alamat</ion-label>
                     <ion-input type="text" name="alamat" class="register-form" placeholder="Alamat" [(ngModel)]="alamat"></ion-input>
@@ -97,7 +97,8 @@
                     <ion-input value="{{item.nama_pemilik}}" type="text" name="nama_pemilik" class="register-form" placeholder="Nama Pemilik" readonly></ion-input>
           
                     <ion-label>Jenis Kepemilikan</ion-label>
-                    <ion-input value="{{item.jenis_kepemilikan}}" type="text" name="jenis_kepemilikan" class="register-form" placeholder="Jenis Kepemilikan" readonly></ion-input>
+                    <ion-input *ngIf="item.jenis_kepemilikan==0" value="Perorangan" type="text" name="jenis_kepemilikan" class="register-form" placeholder="Jenis Kepemilikan" readonly></ion-input>
+                    <ion-input *ngIf="item.jenis_kepemilikan==1" value="Badan Usaha" type="text" name="jenis_kepemilikan" class="register-form" placeholder="Jenis Kepemilikan" readonly></ion-input>
           
                     <ion-label>Nomor KTP</ion-label>
                     <ion-input value="{{item.nomor_ktp}}" type="text" name="nomor_ktp" class="register-form" placeholder="Nomor KTP" readonly></ion-input>
@@ -118,7 +119,8 @@
                     <ion-input value="{{item.kode_pos}}" type="text" name="kode_pos" class="register-form" placeholder="Kode Pos" readonly></ion-input>
           
                     <ion-label>Tipe Agent</ion-label>
-                    <ion-input value="{{item.agent_type}}" type="text" name="agent_type" class="register-form" placeholder="Tipe Agent" readonly></ion-input>
+                    <ion-input *ngIf="item.agent_type==0" value="Agent" type="text" name="agent_type" class="register-form" placeholder="Tipe Agent" readonly></ion-input>
+                    <ion-input *ngIf="item.agent_type==1" value="Sub Agent" type="text" name="agent_type" class="register-form" placeholder="Tipe Agent" readonly></ion-input>
           
                     <ion-label>Bidang Usaha</ion-label>
                     <ion-input value="{{item.bidang_usaha}}" type="text" name="bidang_usaha" class="register-form" placeholder="Bidang Usaha" readonly></ion-input>
