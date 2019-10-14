@@ -19,15 +19,18 @@
             </ion-card>
         </div>
     </div>
-
-    <div class="row styling-row">
-        <div class="col ion-text-center">
-          <ion-button expand="block" class="energized" color="danger" (click)="changePassword()" padding>SIMPAN</ion-button>
-        </div>
-    </div>
-    <div class="row styling-row">
-        <div class="col ion-text-center">
-          <ion-button expand="block" class="energized" color="danger" (click)="logout()" padding>KELUAR</ion-button>
-        </div>
-    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+            <div class="ion-text-center">
+                <ion-button expand="block" class="energized" color="danger" (click)="changePassword()" padding>SIMPAN</ion-button>
+            </div>
+        </ion-col>
+        <ion-col>
+            <div class="ion-text-center">
+                <ion-button expand="block" class="energized" color="danger" (click)="logout()" padding>KELUAR</ion-button>
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>

@@ -48,19 +48,20 @@ export class RfoService {
     });
   }
 
-  // public getRfoDet(id){
-  //   //let baseUrl = "http://178.128.127.241/b2b/api/";
-  //   let params = new URLSearchParams();
-  //   let apiToken=localStorage.getItem('api_token');
+  public getRfoDet(id){
+    //let baseUrl = "http://178.128.127.241/b2b/api/";
+    let params = new URLSearchParams();
+    let apiToken=localStorage.getItem('api_token');
 
-  //   params.set('api_token', apiToken); // ?api_token=qwertyu
-  //   params.set('method','detailRFO'); // ?method=listFilterSurat
-  //   return Observable.create(observer => { this.http.get(this.baseurl+'auth/user.php?'+params.toString()).subscribe(res => { 
-  //     observer.next(res.json());
-  //     observer.complete();  
-  //   }, (err) => {
-  //     console.log(err);
-  //     });
-  //   });
-  // }
+    params.set('api_token', apiToken); // ?api_token=qwertyu
+    params.set('method','detailRFO'); // ?method=listFilterSurat
+    params.set('rfo_id',id);
+    return Observable.create(observer => { this.http.get(this.baseurl+'auth/user.php?'+params.toString()).subscribe(res => { 
+      observer.next(res.json());
+      observer.complete();  
+    }, (err) => {
+      console.log(err);
+      });
+    });
+  }
 }

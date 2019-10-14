@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { RfoService } from '../rfo.service';
 import { ThrowStmt } from '@angular/compiler';
+import { ActionSheetController } from '@ionic/angular';
+
 
 
 @Component({
@@ -25,14 +27,16 @@ export class RfoPage implements OnInit {
     public alertCtrl:AlertController,
     public loadingCtrl:LoadingController,
     public mitra:AuthService,
-    public rfo:RfoService
+    public rfo:RfoService,
+    public actionSheetController: ActionSheetController
     ) {
         this.mitra.getMitra().subscribe(data=>{
-          console.log(data);
+          //console.log(data);
+          // console.log(data.data[0].status);
 
           if(data.data!=''){
-            console.log(this.statusMitra=data.message);
-            this.statusMitra=data.data;
+            //console.log(this.statusMitra=data.message);
+            this.statusMitra=data.data[0].status;
           }else{
             this.statusMitra=data.status;
           }
@@ -53,6 +57,8 @@ export class RfoPage implements OnInit {
         });
     }
 
+    
+
   ngOnInit() {}
 
   doRefresh(event) {
@@ -61,8 +67,8 @@ export class RfoPage implements OnInit {
       console.log(data);
 
       if(data.data!=''){
-        console.log(this.statusMitra=data.message);
-        this.statusMitra=data.data;
+        //console.log(this.statusMitra=data.message);
+        this.statusMitra=data.data[0].status;
       }else{
         this.statusMitra=data.status;
       }
@@ -86,6 +92,47 @@ export class RfoPage implements OnInit {
       
       event.target.complete();
     }, 2000);
+  }
+
+  async presentActionSheet(item) {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'PENAWARAN',
+      buttons: [{
+        text: 'Detail Penawaran',
+        icon: '',
+        handler: () => {
+          console.log('Detail clicked', item.id);
+          this.router.navigate(['/detail-rfo', item.id]);
+        }
+      }, {
+        text: 'Status Penawaran',
+        icon: '',
+        handler: () => {
+          console.log('Status clicked');
+        }
+      }, {
+        text: 'Invoice',
+        icon: '',
+        handler: () => {
+          console.log('Invoice clicked');
+        }
+      }, {
+        text: 'Hapus Penawaran',
+        role: 'destructive',
+        icon: '',
+        handler: () => {
+          console.log('Hapus clicked');
+        }
+      }, {
+        text: 'Cancel',
+        icon: '',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
   async postRfo(){
@@ -133,5 +180,6 @@ export class RfoPage implements OnInit {
   
     await alert.present();
   }
+  
 
 }

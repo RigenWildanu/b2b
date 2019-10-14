@@ -8,7 +8,9 @@ const routes: Routes = [
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'rfo', loadChildren: './rfo/rfo.module#RfoPageModule' },
-  { path: 'pengaturan', loadChildren: './pengaturan/pengaturan.module#PengaturanPageModule' }
+  { path: 'pengaturan', loadChildren: './pengaturan/pengaturan.module#PengaturanPageModule' },
+  { path: 'detail-rfo/:id', loadChildren: './detail-rfo/detail-rfo.module#DetailRfoPageModule' }
+
 
 ];
 @NgModule({

@@ -15,7 +15,7 @@
   </ion-refresher>
   <div class="row">
     <div class="col">
-      <ng-container *ngIf="statusMitra; else elseTemplateMitra">
+      <ng-container *ngIf="statusMitra=='Terverifikasi'; else elseTemplateMitra">
           <ion-card>
               <ion-list inset no-padding>
                   <label>Order</label>
@@ -39,7 +39,7 @@
       <ng-container *ngIf="datarfo!=null; else elseTemplate">
         <ion-card>
           <ion-list inset no-padding *ngFor="let item of datarfo">
-            <ion-item>
+            <ion-item (click)="presentActionSheet(item)">
               <ion-label>
                   {{item.description}}
               </ion-label>
