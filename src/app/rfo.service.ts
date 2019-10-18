@@ -32,6 +32,30 @@ export class RfoService {
       //console.log(return this.http.post);
   }
 
+  public postUpdateRfo(year,docid,description){
+    return Observable.create(observer => {
+      let apiToken=localStorage.getItem('api_token');
+      console.log(apiToken);
+      // siapkan header
+      let headers = new Headers();
+      headers.append('content-type', 'application/x-www-form-urlencoded');
+      // siapkan body
+      let body = new URLSearchParams();
+      body.append('year', year);
+      body.append('docid', docid)
+      body.append('description', description);
+      
+      // call API
+        return this.http.post(this.baseurl+'auth/user.php?method=updateRFO&api_token='+apiToken,body.toString(), {headers:headers}).subscribe(res => { 
+          observer.next(res.json());
+          observer.complete();  
+      }, (err) => { 
+        console.log(err);
+        });
+      });
+      //console.log(return this.http.post);
+  }
+
   public getRfo(){
     //let baseUrl = "http://178.128.127.241/b2b/api/";
     let params = new URLSearchParams();
@@ -48,14 +72,15 @@ export class RfoService {
     });
   }
 
-  public getRfoDet(id){
+  public getRfoDet(year,docid){
     //let baseUrl = "http://178.128.127.241/b2b/api/";
     let params = new URLSearchParams();
     let apiToken=localStorage.getItem('api_token');
 
     params.set('api_token', apiToken); // ?api_token=qwertyu
     params.set('method','detailRFO'); // ?method=listFilterSurat
-    params.set('rfo_id',id);
+    params.set('year',year);
+    params.set('docid',docid);
     return Observable.create(observer => { this.http.get(this.baseurl+'auth/user.php?'+params.toString()).subscribe(res => { 
       observer.next(res.json());
       observer.complete();  
@@ -63,5 +88,67 @@ export class RfoService {
       console.log(err);
       });
     });
+  }
+
+  public getPenawaranHarga(year,docid){
+    let params = new URLSearchParams();
+    let apiToken=localStorage.getItem('api_token');
+
+    params.set('api_token', apiToken); // ?api_token=qwertyu
+    params.set('method','detailPenawaranRFO'); // ?method=listFilterSurat
+    params.set('year',year);
+    params.set('docid',docid);
+    return Observable.create(observer => { this.http.get(this.baseurl+'auth/user.php?'+params.toString()).subscribe(res => { 
+      observer.next(res.json());
+      observer.complete();  
+    }, (err) => {
+      console.log(err);
+      });
+    });
+  }
+
+  public postDeleteRfo(year,docid){
+    return Observable.create(observer => {
+      let apiToken=localStorage.getItem('api_token');
+      console.log(apiToken);
+      // siapkan header
+      let headers = new Headers();
+      headers.append('content-type', 'application/x-www-form-urlencoded');
+      // siapkan body
+      let body = new URLSearchParams();
+      body.append('year', year);
+      body.append('docid', docid)
+      // call API
+        return this.http.post(this.baseurl+'auth/user.php?method=deleteRFO&api_token='+apiToken,body.toString(), {headers:headers}).subscribe(res => { 
+          observer.next(res.json());
+          observer.complete();  
+      }, (err) => { 
+        console.log(err);
+        });
+      });
+      //console.log(return this.http.post);
+  }
+
+  public fetchSubMenu(item){
+    return Observable.create(observer => {
+      let apiToken=localStorage.getItem('api_token');
+      console.log(apiToken);
+      // siapkan header
+      let headers = new Headers();
+      headers.append('content-type', 'application/x-www-form-urlencoded');
+      // siapkan body
+      let body = new URLSearchParams();
+      //body.append('api_token', apiToken);
+      body.append('year', item.year);
+      body.append('docid', item.docid);
+      // call API
+        return this.http.post(this.baseurl+'auth/user.php?method=listSubMenuRFO&api_token='+apiToken,body.toString(), {headers:headers}).subscribe(res => { 
+          observer.next(res.json());
+          observer.complete();  
+      }, (err) => { 
+        console.log(err);
+        });
+      });
+      //console.log(return this.http.post);
   }
 }

@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-buttons slot="start">
+              <ion-back-button text="Kembali" icon="arrow-back"></ion-back-button>
+            </ion-buttons>
+      </ion-buttons>
+    <ion-title>PENAWARAN HARGA</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="row-head">
+        <ion-col>
+            <ion-label>Item</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label>Harga</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label>Unit</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label>QTY</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label>TOTAL</ion-label>
+        </ion-col>
+    </ion-row>
+    <ion-row class="isi" *ngFor="let item of dataDet" style="text-align: center;">
+      <ion-col>
+        <ion-label>{{item.product_name}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>{{item.harga_jual}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>{{item.unit_name}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>{{item.jumlah}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>{{item.tot_harga_jual}}</ion-label>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-list>
+    <ion-item>
+      <ion-input readonly value="Item" style="text-align: center;"></ion-input>
+      <ion-input readonly value="Unit" style="text-align: center;"></ion-input>
+      <ion-input readonly value="Harga Satuan" style="text-align: center;"></ion-input>
+      <ion-input readonly value="QTY" style="text-align: center;"></ion-input>
+      <ion-input readonly value="TOTAL" style="text-align: center;"></ion-input>
+    </ion-item>
+    <ion-item *ngFor="let item of dataDet">
+        <ion-input readonly value="{{item.product_name}}" style="text-align: center;"></ion-input>
+        <ion-input readonly value="{{item.unit_name}}" style="text-align: center;"></ion-input>
+        <ion-input readonly value="{{item.harga_jual}}" style="text-align: center;"></ion-input>
+        <ion-input readonly value="{{item.jumlah}}" style="text-align: center;"></ion-input>
+        <ion-input readonly value="{{item.tot_harga_jual}}" style="text-align: center;"></ion-input>
+    </ion-item>
+  </ion-list> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: right; border-top: 1px solid rgb(177,177,177,0.5); border-bottom: 1px solid rgb(177,177,177,0.5);">
+          <ion-label style="text-align: right;">TOTAL :&nbsp;{{harga_total}}</ion-label>
+      </ion-col>  
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="col ion-text-center">
+            <ion-button expand="block" class="energized" color="danger" padding>TIDAK SETUJU</ion-button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="col ion-text-center">
+            <ion-button expand="block" class="energized" color="success" padding>SETUJU</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

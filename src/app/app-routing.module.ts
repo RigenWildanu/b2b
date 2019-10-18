@@ -9,7 +9,9 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'rfo', loadChildren: './rfo/rfo.module#RfoPageModule' },
   { path: 'pengaturan', loadChildren: './pengaturan/pengaturan.module#PengaturanPageModule' },
-  { path: 'detail-rfo/:id', loadChildren: './detail-rfo/detail-rfo.module#DetailRfoPageModule' }
+  { path: 'detail-rfo/:year/:docid', loadChildren: './detail-rfo/detail-rfo.module#DetailRfoPageModule' },
+  { path: 'penawaran-harga/:year/:docid', loadChildren: './penawaran-harga/penawaran-harga.module#PenawaranHargaPageModule' }
+
 
 
 ];
