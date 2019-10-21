@@ -151,4 +151,28 @@ export class RfoService {
       });
       //console.log(return this.http.post);
   }
+
+  public postPenawaran(year,docid,approve,catatan){
+    return Observable.create(observer => {
+      let apiToken=localStorage.getItem('api_token');
+      console.log(apiToken);
+      // siapkan header
+      let headers = new Headers();
+      headers.append('content-type', 'application/x-www-form-urlencoded');
+      // siapkan body
+      let body = new URLSearchParams();
+      body.append('year', year);
+      body.append('docid', docid);
+      body.append('approve',approve);
+      body.append('catatan',catatan);
+      // call API
+        return this.http.post(this.baseurl+'auth/user.php?method=approveRFO&api_token='+apiToken,body.toString(), {headers:headers}).subscribe(res => { 
+          observer.next(res.json());
+          observer.complete();  
+      }, (err) => { 
+        console.log(err);
+        });
+      });
+      //console.log(return this.http.post);
+  }
 }

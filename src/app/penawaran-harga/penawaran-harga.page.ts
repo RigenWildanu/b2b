@@ -14,6 +14,8 @@ export class PenawaranHargaPage implements OnInit {
   public sub;
   public year;
   public docid;
+  public approve;
+  public catatan;
 
   public harga_total;
   public dataDet=[];
@@ -48,4 +50,44 @@ export class PenawaranHargaPage implements OnInit {
   ngOnInit() {
   }
 
+  async postPenawaran(year,docid,approve,catatan){
+    const loading = await this.loadingCtrl.create({
+      spinner: "crescent",
+      message: 'Mengirim Respon...',
+      translucent: true,
+      showBackdrop: true
+  });
+  await loading.present();
+
+  year = this.year;
+  docid = this.docid;
+  approve = this.approve;
+  catatan = this.catatan;
+  
+  console.log(year+docid+approve+catatan)
+  this.rfo.postPenawaran(year,docid,approve,catatan).subscribe(data=>{
+    loading.dismiss();  
+    console.log('respon json API', data);
+    if(data.status){
+      console.log(data.data[0].api_token);
+      this.presentAlert('Respon Anda telah berhasil dikirim!');
+
+      this.router.navigateByUrl('/tabs/rfo');
+    }else{
+      this.presentAlert(data.message);
+      console.log(data.message);
+    }
+  });
+  }
+
+  async presentAlert(message) {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      subHeader: '',
+      message: message,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
 }

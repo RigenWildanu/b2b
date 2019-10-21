@@ -18,11 +18,11 @@
       <ng-container *ngIf="statusMitra=='Terverifikasi'; else elseTemplateMitra">
           <ion-card>
               <ion-list inset no-padding>
-                  <label>Order</label>
+                  <label>Detail Pesanan</label>
                   <ion-textarea placeholder="Contoh: kangkung 1kg, telor 1/4kg, beras 1 ton, dst" name="rfo" auto-grow="true" [(ngModel)]="description" required></ion-textarea>
                 </ion-list>
                 <div class="col ion-text-center">
-                  <ion-button expand="block" class="energized" color="danger" (click)="postRfo()" padding>KIRIM PESANAN</ion-button>
+                  <ion-button expand="block" class="energized" color="danger" (click)="postRfo()" padding>MASUKKAN PESANAN</ion-button>
                 </div>
           </ion-card>
       </ng-container>

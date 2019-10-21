@@ -5,7 +5,7 @@
               <ion-back-button text="Kembali" icon="arrow-back"></ion-back-button>
             </ion-buttons>
       </ion-buttons>
-    <ion-title>PENAWARAN HARGA</ion-title>
+    <ion-title>DETAIL HARGA</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,6 +13,8 @@
   <ion-grid>
     <ion-row class="row-head">
         <ion-col>
+            <ion-input type="hidden" [(ngModel)]="year"></ion-input>
+            <ion-input type="hidden" [(ngModel)]="docid"></ion-input>
             <ion-label>Item</ion-label>
         </ion-col>
         <ion-col>
@@ -47,37 +49,43 @@
 
     </ion-row>
   </ion-grid>
-  <!-- <ion-list>
-    <ion-item>
-      <ion-input readonly value="Item" style="text-align: center;"></ion-input>
-      <ion-input readonly value="Unit" style="text-align: center;"></ion-input>
-      <ion-input readonly value="Harga Satuan" style="text-align: center;"></ion-input>
-      <ion-input readonly value="QTY" style="text-align: center;"></ion-input>
-      <ion-input readonly value="TOTAL" style="text-align: center;"></ion-input>
-    </ion-item>
-    <ion-item *ngFor="let item of dataDet">
-        <ion-input readonly value="{{item.product_name}}" style="text-align: center;"></ion-input>
-        <ion-input readonly value="{{item.unit_name}}" style="text-align: center;"></ion-input>
-        <ion-input readonly value="{{item.harga_jual}}" style="text-align: center;"></ion-input>
-        <ion-input readonly value="{{item.jumlah}}" style="text-align: center;"></ion-input>
-        <ion-input readonly value="{{item.tot_harga_jual}}" style="text-align: center;"></ion-input>
-    </ion-item>
-  </ion-list> -->
-  <ion-grid>
+  <ion-grid style="text-align: right;">
     <ion-row>
-      <ion-col style="text-align: right; border-top: 1px solid rgb(177,177,177,0.5); border-bottom: 1px solid rgb(177,177,177,0.5);">
-          <ion-label style="text-align: right;">TOTAL :&nbsp;{{harga_total}}</ion-label>
+      <ion-col>
+          <ion-label>Ongkos Kirim :&nbsp;ongkir</ion-label>
       </ion-col>  
+    </ion-row>
+    <ion-row style="border-top: 1px solid rgb(177,177,177,0.5); border-bottom: 1px solid rgb(177,177,177,0.5);">
+      <ion-col>
+          <ion-label>TOTAL :&nbsp;{{harga_total}}</ion-label>
+      </ion-col>  
+    </ion-row>
+    <!-- <ion-row style="text-align: left;">
+      <ion-col>
+          <ion-label style="font-size: 10px; color: red;">*abaikan jika tidak setuju</ion-label>
+          <ion-input value="Pilih Tipe Pembayaran" readonly></ion-input>
+          <ion-select placeholder="Pilih salah satu" [(ngModel)]="payment">
+              <ion-select-option value="1">COD</ion-select-option>
+              <ion-select-option value="2">Transfer</ion-select-option>
+              <ion-select-option value="3">Termin</ion-select-option>
+          </ion-select>
+      </ion-col>
+    </ion-row> -->
+    <ion-row style="text-align: left;">
+      <ion-col>
+        <ion-input value="Catatan" readonly></ion-input>
+        <textarea style="width: 100%; min-height: 100px;" [(ngModel)]="catatan" placeholder="Catatan Produk & Catatan Pengiriman"></textarea>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <div class="col ion-text-center">
-            <ion-button expand="block" class="energized" color="danger" padding>TIDAK SETUJU</ion-button>
+            <ion-button expand="block" class="energized" color="danger" (click)="postPenawaran(year,docid,approve=0,catatan)" padding>TIDAK SETUJU</ion-button>
         </div>
       </ion-col>
       <ion-col>
         <div class="col ion-text-center">
-            <ion-button expand="block" class="energized" color="success" padding>SETUJU</ion-button>
+            <ion-button expand="block" class="energized" color="success" (click)="postPenawaran(year,docid,approve=1,catatan)" padding>SETUJU</ion-button>
         </div>
       </ion-col>
     </ion-row>

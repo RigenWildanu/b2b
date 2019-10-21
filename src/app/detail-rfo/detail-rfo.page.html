@@ -5,7 +5,7 @@
               <ion-back-button text="Kembali" icon="arrow-back"></ion-back-button>
             </ion-buttons>
       </ion-buttons>
-    <ion-title>DETAIL PENAWARAN</ion-title>
+    <ion-title>REVISI PESANAN</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,13 +21,13 @@
           
   <ion-card>
       <ion-list inset no-padding>
-          <ion-label>No Penawaran</ion-label>
+          <ion-label>No Pemesanan</ion-label>
           <ion-input class="upd-rfo" value="{{no_rfo}}" readonly></ion-input>
           <ion-label>Nama Warung</ion-label>
           <ion-input class="upd-rfo" value="{{nama_warung}}" readonly></ion-input>
           <ion-label>Tanggal Pesan</ion-label>
           <ion-input class="upd-rfo" value="{{tgl_pesan}}" readonly></ion-input>
-          <ion-label>Item Pesanan</ion-label>
+          <ion-label>Revisi Item Pesanan</ion-label>
           <ion-textarea placeholder="Contoh: kangkung 1kg, telor 1/4kg, beras 1 ton, dst" name="rfo" auto-grow="true" [(ngModel)]="description"></ion-textarea>
           <!-- <ion-item>
               <span>update :&nbsp;</span>
@@ -36,6 +36,6 @@
       </ion-list>
   </ion-card>
 <div class="col ion-text-center" *ngIf="button_update=='Enable'">
-    <ion-button expand="block" class="energized" color="danger" padding (click)="postUpdateRfo(year,docid,description)">UPDATE PESANAN</ion-button>
+    <ion-button expand="block" class="energized" color="danger" padding (click)="postUpdateRfo(year,docid,description)">REVISI</ion-button>
 </div>
 </ion-content>

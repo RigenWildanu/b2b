@@ -21,6 +21,7 @@ export class RfoPage implements OnInit {
   public year;
   public docid;
 
+
   constructor(
     
     public router:Router,
@@ -96,7 +97,7 @@ export class RfoPage implements OnInit {
     }, 2000);
   }
 
-  async showSubMenu(buttons, title = 'PENAWARAN'){
+  async showSubMenu(buttons, title = 'PESANAN'){
     const actionSheet = await this.actionSheetController.create({
       header: title,
       buttons: buttons
@@ -132,6 +133,17 @@ export class RfoPage implements OnInit {
                   handler:()=>{
                     console.log('detail penawaran rfo clicked');
                     this.router.navigate(['/penawaran-harga', item.year, item.docid]);
+                  }
+                }
+              );
+            break;
+            case "detailInvoice":
+              buttons.push(
+                {
+                  text:element.method_name,
+                  handler:()=>{
+                    console.log('invoice clicked');
+                    this.router.navigate(['/invoice', item.year, item.docid]);
                   }
                 }
               );
@@ -257,5 +269,6 @@ export class RfoPage implements OnInit {
     }
   });
   }
+
 
 }

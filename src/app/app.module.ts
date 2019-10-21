@@ -12,6 +12,10 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+// import { io } from 'socket.io-client';
+
+declare var require: any;
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,4 +28,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(){
+    const socket = require('socket.io-client')('http://192.168.1.10:3000/');
+    socket.emit('register','user1');
+    socket.on('private_chat',function(data){
+      var username = data.username;
+      var message = data.message;
+     
+      console.log('data pek');
+    });
+  }
+}

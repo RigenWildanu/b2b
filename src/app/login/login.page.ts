@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController, NavController, AlertController, Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { io } from 'socket.io-client';
 
 @Component({
   selector: 'app-login',
@@ -43,9 +44,11 @@ export class LoginPage implements OnInit {
 
     //console.log(authvar);
     this.auth.postLogin(authvar).subscribe(data=>{
+      // var socket = require('socket.io-client')('http://192.168.1.10:3000/');
       loading.dismiss();  
       console.log('respon json API', data);
       if(data.status){
+        // socket.emit('register','user1');
         console.log(data.data[0].api_token);
 
         localStorage.setItem('api_token',data.data[0].api_token);
