@@ -71,6 +71,7 @@ export class AuthService {
   public postRegisterMitra(registerMitra){
     return Observable.create(observer => {
       let apiToken=localStorage.getItem('api_token');
+      console.log(apiToken);
       // siapkan header
       let headers = new Headers();
       headers.append('content-type', 'application/x-www-form-urlencoded');
@@ -87,6 +88,7 @@ export class AuthService {
       body.append('kode_pos', registerMitra.kode_pos);
       body.append('agent_type', registerMitra.agent_type);
       body.append('bidang_usaha', registerMitra.bidang_usaha);
+      body.append('sales_id', registerMitra.sales_id);
       body.append('notes', registerMitra.notes);
 
       // call API
@@ -121,6 +123,24 @@ export class AuthService {
         });
       });
       //console.log(return this.http.post);
+  }
+
+  public getSales(){
+    //let baseUrl = "http://178.128.127.241/b2b/api/";
+    let params = new URLSearchParams();
+    // let apiToken=localStorage.getItem('api_token');
+
+    // params.set('api_token', apiToken); // ?api_token=qwertyu
+    params.set('method','listSales'); 
+
+    //console.log(params.set);
+    return Observable.create(observer => { this.http.get(this.baseurl+'auth/user.php?'+params.toString()).subscribe(res => { 
+      observer.next(res.json());
+      observer.complete();  
+    }, (err) => {
+      console.log(err);
+      });
+    });
   }
 
   public getMitra(){

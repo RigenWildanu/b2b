@@ -17,6 +17,7 @@ export class PenawaranHargaPage implements OnInit {
   public approve;
   public catatan;
 
+  public ongkos_kirim;
   public harga_total;
   public dataDet=[];
 
@@ -38,6 +39,7 @@ export class PenawaranHargaPage implements OnInit {
         console.log('rfo'+data.data[0].detail_product[0].product_name);
 
         this.harga_total=data.data[0].harga_total;
+        this.ongkos_kirim=data.data[0].ongkos_kirim;
         // this.dataDet=data.data[0].detail_product;
        
         this.dataDet=data.data[0].detail_product;

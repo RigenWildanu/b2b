@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'pengaturan', loadChildren: './pengaturan/pengaturan.module#PengaturanPageModule' },
   { path: 'detail-rfo/:year/:docid', loadChildren: './detail-rfo/detail-rfo.module#DetailRfoPageModule' },
   { path: 'penawaran-harga/:year/:docid', loadChildren: './penawaran-harga/penawaran-harga.module#PenawaranHargaPageModule' },
-  { path: 'invoice/:year/:/docid', loadChildren: './invoice/invoice.module#InvoicePageModule' }
+  { path: 'invoice/:year/:docid', loadChildren: './invoice/invoice.module#InvoicePageModule' }
 
 
 

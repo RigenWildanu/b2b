@@ -41,6 +41,22 @@
           <ion-list inset no-padding *ngFor="let item of datarfo">
             <ion-item (click)="itemClick(item)">
               <ion-label>
+                <ng-container *ngIf="item.flag_pengajuan_harga==0; else flag">
+                    <div class="ion-text-end">
+                        <ion-button  fill="solid" size="small" color="danger">Belum ada penawaran</ion-button>
+                    </div>
+                    <!-- <ion-label class="date-rfo" style="text-align: right;" color="danger">
+                        Belum ada penawaran
+                    </ion-label> -->
+                </ng-container>
+                <ng-template #flag>
+                    <div class="ion-text-end">
+                        <ion-button  fill="solid" size="small" color="success">Sudah ada penawaran</ion-button>
+                    </div>
+                    <!-- <ion-label class="date-rfo" style="text-align: right;" color="success">
+                        Sudah ada penawaran
+                    </ion-label> -->
+                </ng-template>
                   {{item.no_rfo}}
                   <ion-label class="date-rfo">
                     Tgl Pesan : {{item.rfo_date}}

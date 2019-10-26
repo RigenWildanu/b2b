@@ -28,10 +28,12 @@ export class ProfilePage implements OnInit {
   public agent_type;
   public bidang_usaha;
   public notes;
+  public sales_id;
 
   constructor(
     public auth:AuthService,
     public mitra:AuthService,
+    public sales:AuthService,
     public loadingCtrl:LoadingController,
     public router:Router,
     private platform:Platform,
@@ -55,6 +57,12 @@ export class ProfilePage implements OnInit {
             this.displayMitra=data.status;
           }
           //this.displayMitra=data.message;
+        });
+
+        this.auth.getSales().subscribe(data=>{
+          console.log(data);
+  
+          this.sales=data.data;
         });
   }
   ngOnInit() {
@@ -102,6 +110,7 @@ export class ProfilePage implements OnInit {
       kode_pos : this.kode_pos,
       agent_type : this.agent_type,
       bidang_usaha : this.bidang_usaha,
+      sales_id : this.sales_id,
       notes : this.notes
     }
 

@@ -77,6 +77,11 @@
           
                     <ion-label>Bidang Usaha</ion-label>
                     <ion-input type="text" name="bidang_usaha" class="register-form" placeholder="Bidang Usaha" [(ngModel)]="bidang_usaha"></ion-input>
+
+                    <ion-label>Referensi</ion-label>
+                    <ion-select placeholder="Pilih salah satu" [(ngModel)]="sales_id">
+                        <ion-select-option value="{{item.id_sales}}"  *ngFor="let item of sales">{{item.nama_sales}}</ion-select-option>
+                    </ion-select>
           
                     <ion-label >Notes</ion-label>
                     <ion-textarea placeholder="Contoh: Saya ingin bergabung dengan keluarga marko karena..." name="notes" auto-grow="true" [(ngModel)]="notes"></ion-textarea>
@@ -123,7 +128,10 @@
                     <ion-input *ngIf="item.agent_type==1" value="Sub Agent" type="text" name="agent_type" class="register-form" placeholder="Tipe Agent" readonly></ion-input>
           
                     <ion-label>Bidang Usaha</ion-label>
-                    <ion-input value="{{item.bidang_usaha}}" type="text" name="bidang_usaha" class="register-form" placeholder="Bidang Usaha" readonly></ion-input>
+                    <ion-input value="{{item.bidang_usaha}}" type="text" name="bidang_usaha" class="register-form" placeholder="Sales PIC" readonly></ion-input>
+
+                    <ion-label>Sales PIC</ion-label>
+                    <ion-input type="text" value="{{item.sales_name}}" readonly name="bidang_usaha" class="register-form" placeholder="Sales PIC"></ion-input>
 
                     <ion-label>Status</ion-label>
                     <ion-input value="{{item.status}}" type="text" name="status" class="register-form" placeholder="Bidang Usaha" readonly></ion-input>
