@@ -20,6 +20,7 @@ export class RfoPage implements OnInit {
   public description;
   public year;
   public docid;
+  public no_invoice;
 
 
   constructor(
@@ -143,7 +144,7 @@ export class RfoPage implements OnInit {
                   text:element.method_name,
                   handler:()=>{
                     console.log('invoice clicked');
-                    this.router.navigate(['/invoice', item.year, item.docid]);
+                    this.router.navigate(['/invoice', item.no_invoice]);
                   }
                 }
               );

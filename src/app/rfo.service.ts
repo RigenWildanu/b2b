@@ -175,4 +175,20 @@ export class RfoService {
       });
       //console.log(return this.http.post);
   }
+
+  public getInvoice(no_invoice){
+    let params = new URLSearchParams();
+    let apiToken=localStorage.getItem('api_token');
+
+    params.set('api_token', apiToken); // ?api_token=qwertyu
+    params.set('method','detailInvoice'); // ?method=listFilterSurat
+    params.set('no_invoice',no_invoice);
+    return Observable.create(observer => { this.http.get(this.baseurl+'auth/user.php?'+params.toString()).subscribe(res => { 
+      observer.next(res.json());
+      observer.complete();  
+    }, (err) => {
+      console.log(err);
+      });
+    });
+  }
 }

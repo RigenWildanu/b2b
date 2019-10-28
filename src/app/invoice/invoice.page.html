@@ -13,71 +13,47 @@
     <ion-grid>
       <img src="../../assets/logo_marko.png" width="80px" style="margin-left: 7px;">
       <ion-row>
-        <ion-col size="5.5">
-          Ruko Melia Work Blok A No. 36
-        </ion-col>
-        <ion-col>
+        <ion-col size="3">
           Nomor Invoice
         </ion-col>
         <ion-col size="0.1">
           :
         </ion-col>
         <ion-col>
-            207/KMT/X/19
+            {{no_invoice}}
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="5.5" style="margin-top: -10px;">
-          Jl. Boulevard Graha Raya Bintaro
-        </ion-col>
-        <ion-col>
+        <ion-col size="3">
          Tanggal
         </ion-col>
         <ion-col size="0.1">
             :
         </ion-col>
         <ion-col>
-            17 Oktober 2019
+            {{tanggal_invoice}}
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="5.5" style="margin-top: -10px;"> 
-          Paku Jaya, Serpong
-        </ion-col>
-        <ion-col>
-          Kode Pasar
+        <ion-col size="3"> 
+          Metode Pembayaran
         </ion-col>
         <ion-col size="0.1">
             :
         </ion-col>
         <ion-col>
-          MP.JKT.0001
+          {{metode_pembayaran}}
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="5.5" style="margin-top: -20px;">
-            www.markopelago.com
-        </ion-col>
-        <ion-col>
-          Lokasi Pasar
+        <ion-col size="3"> 
+          Tipe Pembayaran
         </ion-col>
         <ion-col size="0.1">
             :
         </ion-col>
         <ion-col>
-            Pasar Induk Kramat Jati
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="5.5"></ion-col>
-        <ion-col>
-          Pembayaran
-        </ion-col>
-        <ion-col size="0.1">
-            :
-        </ion-col>
-        <ion-col>
-            COD/B2B
+          {{tipe_pembayaran}}
         </ion-col>
       </ion-row>
       
@@ -86,67 +62,63 @@
               <ion-label>Customer</ion-label>
           </ion-col>
           <ion-col>
-              <ion-label>Nama Order</ion-label>
+              <ion-label>No Pesanan</ion-label>
           </ion-col>
-          <ion-col>
+          <!-- <ion-col>
               <ion-label>Kurir</ion-label>
-          </ion-col>
+          </ion-col> -->
       </ion-row>
       <ion-row style="text-align: center;">
           <ion-col>
-              <ion-label>Mama Ipang</ion-label>
+              <ion-label>{{nama_mitra}}</ion-label>
           </ion-col>
           <ion-col>
-              <ion-label>Nomor Order</ion-label>
+              <ion-label>{{no_rfo}}</ion-label>
           </ion-col>
-          <ion-col>
+          <!-- <ion-col>
               <ion-label>Kurir</ion-label>
-          </ion-col>
+          </ion-col> -->
       </ion-row>
       <ion-row style="text-align: center;">
         <ion-col>
-          ALamat
+          {{alamat}}
         </ion-col>
-        <ion-col></ion-col>
         <ion-col></ion-col>
       </ion-row>
 
       <ion-row class="row-head" style="background-color: rgb(182, 111, 60); color: #fff;">
           <ion-col>
-              <ion-input type="hidden" [(ngModel)]="year"></ion-input>
-              <ion-input type="hidden" [(ngModel)]="docid"></ion-input>
               <ion-label>Item</ion-label>
           </ion-col>
           <ion-col>
               <ion-label>Harga</ion-label>
           </ion-col>
           <ion-col>
-              <ion-label>Unit</ion-label>
+            <ion-label>QTY</ion-label>
           </ion-col>
           <ion-col>
-              <ion-label>QTY</ion-label>
+              <ion-label>Unit</ion-label>
           </ion-col>
           <ion-col>
               <ion-label>TOTAL</ion-label>
           </ion-col>
       </ion-row>
-      <ion-row class="isi" style="text-align: center;">
+      <ion-row class="isi" style="text-align: center;" *ngFor="let item of invoiceDet">
         <ion-col>
-          <ion-label>tes</ion-label>
+          <ion-label>{{item.product_name}}</ion-label>
         </ion-col>
         <ion-col>
-          <ion-label>tes</ion-label>
+          <ion-label>{{item.harga_jual}}</ion-label>
         </ion-col>
         <ion-col>
-          <ion-label>tes</ion-label>
+          <ion-label>{{item.jumlah}}</ion-label>
         </ion-col>
         <ion-col>
-          <ion-label>tes</ion-label>
+          <ion-label>{{item.unit_name}}</ion-label>
         </ion-col>
         <ion-col>
-          <ion-label>tes</ion-label>
+          <ion-label>{{item.tot_harga_jual}}</ion-label>
         </ion-col>
-  
       </ion-row>
     </ion-grid>
     <ion-grid style="text-align: right;">
@@ -165,9 +137,9 @@
       <ion-row>
         <ion-col>Tanda Terima</ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row style="margin-top: 20px;">
         <ion-col>
-          Customer Name
+          {{nama_mitra}}
         </ion-col>
       </ion-row>
     </ion-grid>
