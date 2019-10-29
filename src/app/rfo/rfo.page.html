@@ -41,30 +41,31 @@
           <ion-list inset no-padding *ngFor="let item of datarfo">
             <ion-item (click)="itemClick(item)">
               <ion-label>
-                <ng-container *ngIf="item.flag_pengajuan_harga==0; else flag">
-                    <div class="ion-text-end">
-                        <ion-button  fill="solid" size="small" color="danger" style="font-size: 10px;">Belum ada penawaran</ion-button>
-                    </div>
-                    <!-- <ion-label class="date-rfo" style="text-align: right;" color="danger">
-                        Belum ada penawaran
-                    </ion-label> -->
-                </ng-container>
-                <ng-template #flag>
-                    <div class="ion-text-end">
-                        <ion-button  fill="solid" size="small" color="success" style="font-size: 10px;" >Sudah ada penawaran</ion-button>
-                    </div>
-                    <ng-container *ngIf="item.invoice_status=='Belum Terbayar'; else flag_invoice">
-                      <div class="ion-text-end">
-                          <ion-button  fill="solid" size="small" color="danger" style="font-size: 10px;" >Invoice Belum Terbayar</ion-button>
-                      </div>
-                    </ng-container>
-                    <ng-template #flag_invoice>
-                      <div class="ion-text-end">
-                          <ion-button  fill="solid" size="small" color="danger" style="font-size: 10px;" >Invoice Sudah Terbayar</ion-button>
-                      </div>
-                    </ng-template>
-                    
-                </ng-template>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                    </ion-col>
+                    <ion-col>
+                        <ng-container *ngIf="item.flag_pengajuan_harga==0; else flag">
+                            <div class="ion-text-end">
+                                <ion-button  fill="solid" size="small" color="danger" style="font-size: 10px;">Belum ada penawaran</ion-button>
+                            </div>
+                        </ng-container>
+                        <ng-template #flag>
+                          <ng-container *ngIf="!item.invoice_status; else elseInv">
+                              <div class="ion-text-end">
+                                  <ion-button  fill="solid" size="small" color="success" style="font-size: 10px;" >Sudah ada penawaran</ion-button>
+                              </div>
+                          </ng-container>
+                          <ng-template #elseInv>  
+                              <div class="ion-text-end">
+                                  <ion-button  fill="solid" size="small" color="success" style="font-size: 10px;" >Invoice {{item.invoice_status}}</ion-button>
+                              </div>
+                          </ng-template> 
+                        </ng-template>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
                   {{item.no_rfo}}
                   <ion-label class="date-rfo">
                     Tgl Pesan : {{item.rfo_date}}
