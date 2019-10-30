@@ -30,9 +30,9 @@ declare var require: any;
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  public localNotifications;
+  // public localNotifications;
 
-  constructor(){
+  constructor(public localNotifications: LocalNotifications){
     let email = localStorage.getItem('email');
     let telepon = localStorage.getItem('telepon');
 
@@ -60,5 +60,6 @@ export class AppModule {
       // sound: 'file://sound.mp3',
       data: { secret: 'key_data' }
     });
+
   }
 }
