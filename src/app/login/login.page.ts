@@ -44,15 +44,21 @@ export class LoginPage implements OnInit {
 
     //console.log(authvar);
     this.auth.postLogin(authvar).subscribe(data=>{
-      // var socket = require('socket.io-client')('http://192.168.1.10:3000/');
       loading.dismiss();  
       console.log('respon json API', data);
       if(data.status){
         // socket.emit('register','user1');
         console.log(data.data[0].api_token);
+        console.log(data.data[0].email);
 
         localStorage.setItem('api_token',data.data[0].api_token);
+        localStorage.setItem('email',data.data[0].email);
+        localStorage.setItem('telepon',data.data[0].telepon);
+
         let api_token = localStorage.getItem('api_token');
+        let email = localStorage.getItem('email');
+
+        // console.log(localStorage.getItem('telepon'))
 
         this.router.navigateByUrl('/tabs');
       }else{

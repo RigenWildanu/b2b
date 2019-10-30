@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-// import { io } from 'socket.io-client';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 declare var require: any;
 
@@ -23,20 +23,42 @@ declare var require: any;
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     HttpClient
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  public localNotifications;
+
   constructor(){
-    const socket = require('socket.io-client')('http://192.168.1.10:3000/');
-    socket.emit('register','user1');
-    socket.on('private_chat',function(data){
+    let email = localStorage.getItem('email');
+    let telepon = localStorage.getItem('telepon');
+
+    console.log(telepon);
+
+    let notif=this;
+
+    const socket = require('socket.io-client')('http://178.128.127.241:3000/');
+    socket.emit('register',localStorage.getItem('telepon'));
+    socket.on('notif',function(data){
       var username = data.username;
       var message = data.message;
-     
+      
+      notif.notif(message);
+
       console.log('data pek');
+    });
+  }
+
+  public notif(msg){
+
+    this.localNotifications.schedule({
+      id: 1,
+      text: msg,
+      // sound: 'file://sound.mp3',
+      data: { secret: 'key_data' }
     });
   }
 }
