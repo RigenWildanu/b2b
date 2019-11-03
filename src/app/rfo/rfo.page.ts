@@ -14,7 +14,7 @@ import { ActionSheetController } from '@ionic/angular';
   styleUrls: ['./rfo.page.scss'],
 })
 export class RfoPage implements OnInit {
-  public statusMitra=[];
+  public statusMitra:String;
   public datarfo=[];
 
   public description;

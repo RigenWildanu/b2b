@@ -1,0 +1,6 @@
+1. ionic cordova build --release android
+2. jarsigner --verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore ./platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk alias_name
+3. jarsiginet password : m4rk0p3l4g0
+4. go to C:\Users\DELL\AppData\Local\Android\Sdk\build-tools\(newest)
+5. paste app-release-unsigned.apk to zipalign durectory (step 4)
+6. run zipalign -v 4 app-release-unsigned.apk b2b_markopelago.ap
